@@ -1,6 +1,5 @@
 // vars/owasp_dependency.groovy
 def call() {
-    dependencycheck additionalArgumenets: '--scan ./', odcInstallation: 'OWASP'
-    dependencycheckPublisher pattern: '**/dependency-check-report.xml'
-    
+    dependencyCheck additionalArguments: '--scan ./', odcInstallation: 'OWASP'
+    dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
 }
