@@ -1,6 +1,8 @@
 // vars/trivy_scan.groovy
 def call() {
-    sh '''
-    trivy fs --exit-code 1 --severity HIGH,CRITICAL .
-    '''
+    try {
+        sh 'trivy fs --exit-code 1 --severity HIGH,CRITICAL .'
+    } catch (Exception e) {
+        error "Trivy scan failed: ${e.message}"
+    }
 }
